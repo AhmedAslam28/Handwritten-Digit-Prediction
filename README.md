@@ -6,5 +6,5 @@ This project aims to predict handwritten digits using a simple Deep Learning mod
 ## Data Preprocessing
 - The dataset (MNIST) was used for training the model.
 - Images were normalized and reshaped before training.
-![Image Description](Ouputs/epchs1.png)
+![Image Description](Outputs/epchs1.png)
 
