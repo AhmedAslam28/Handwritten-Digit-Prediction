@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handwritten Digit Recognition</title>
+    <link rel="stylesheet" type="text/css" href="static/style.css">
+</head>
+<body>
+  <div class="container-box">
+    <div class="container">
+        <h1 style="color: black; font-size: 2.5em; margin-bottom: 30px;">Upload Image of Handwritten Digit</h1>
+        <form id="prediction_form" enctype="multipart/form-data">
+            <input id="file_input" type="file" accept=".png, .jpg, .jpeg">
+            <button type="submit">Predict</button>
+        </form>
+        <div id="prediction_result"></div>
+    </div>
+
+    <!-- JavaScript code to handle displaying prediction result -->
+    <script>
+        // Function to display prediction result
+        function displayPrediction(result) {
+            // Get the div element for displaying prediction result
+            var predictionDiv = document.getElementById("prediction_result");
+
+            // Update the content of the div with the prediction result
+            predictionDiv.innerHTML = "<p class='big-font'>Prediction Result: " + result + "</p>";
+        }
+
+        // Function to handle form submission
+        document.getElementById("prediction_form").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent default form submission behavior
+
+            var formData = new FormData();
+            formData.append("file", document.getElementById("file_input").files[0]); // Get the selected file
+
+            // Send a POST request to the server to predict
+            fetch("/predict", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.text()) // Convert response to text
+            .then(result => displayPrediction(result)) // Display prediction result
+            .catch(error => console.error("Error:", error));
+        });
+    </script>
+</body>
+</html>
