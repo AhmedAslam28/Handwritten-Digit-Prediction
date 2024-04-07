@@ -11,7 +11,7 @@ The goal is to create a web-based interface that allows users to upload images o
 
 ## Model Architecture
 - the CNN model architecture consists of convolutional and pooling layers followed by fully connected layers:
-
+![Image Description](Outputs/train.png)
 ## Training Process
   ![Image Description](Outputs/epoch.png)
 
